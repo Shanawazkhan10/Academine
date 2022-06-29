@@ -114,3 +114,12 @@
     flex-direction: column;
   }
 }
+.ullist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lilist {
+  display: inline;
+}
