@@ -38,53 +38,54 @@ export default function RecipeReviewCard(props) {
       <div className="container">
         <div className="row">
           {/* <div> */}
-          {props.cardData.map(({ id, name, address, img }) => (
-            <div className="col-4 mt-5">
-              <Card key={id} sx={{ maxWidth: 345 }}>
-                <CardHeader
-                  avatar={
-                    <Avatar
-                      src={img}
-                      sx={{ bgcolor: red[500] }}
-                      aria-label="recipe"
-                    />
-                  }
-                  action={
-                    <IconButton aria-label="settings">
-                      <MoreVertIcon />
+          {props.cardData.map(
+            ({ id, name, address, url, thumbnailUrl, title }) => (
+              <div className="col-4 mt-5">
+                <Card key={id} sx={{ maxWidth: 345 }}>
+                  <CardHeader
+                    avatar={
+                      <Avatar
+                        src={thumbnailUrl}
+                        sx={{ bgcolor: red[500] }}
+                        aria-label="recipe"
+                      />
+                    }
+                    action={
+                      <IconButton aria-label="settings">
+                        <MoreVertIcon />
+                      </IconButton>
+                    }
+                    title={name}
+                    // subheader="September 14, 2016"
+                  />
+                  <CardMedia
+                    component="img"
+                    height="194"
+                    image={url}
+                    alt="Paella dish"
+                  />
+                  <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                      {title}
+                    </Typography>
+                  </CardContent>
+                  <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                      <FavoriteIcon />
                     </IconButton>
-                  }
-                  title={name}
-                  // subheader="September 14, 2016"
-                />
-                <CardMedia
-                  component="img"
-                  height="194"
-                  image={img}
-                  alt="Paella dish"
-                />
-                <CardContent>
-                  <Typography variant="body2" color="text.secondary">
-                    {address}
-                  </Typography>
-                </CardContent>
-                <CardActions disableSpacing>
-                  <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                  </IconButton>
-                  <IconButton aria-label="share">
-                    <ShareIcon />
-                  </IconButton>
-                  <ExpandMore
-                    expand={expanded}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                  >
-                    <ExpandMoreIcon />
-                  </ExpandMore>
-                </CardActions>
-                {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
+                    <IconButton aria-label="share">
+                      <ShareIcon />
+                    </IconButton>
+                    <ExpandMore
+                      expand={expanded}
+                      onClick={handleExpandClick}
+                      aria-expanded={expanded}
+                      aria-label="show more"
+                    >
+                      <ExpandMoreIcon />
+                    </ExpandMore>
+                  </CardActions>
+                  {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>Method:</Typography>
             <Typography paragraph>
@@ -115,9 +116,10 @@ export default function RecipeReviewCard(props) {
             </Typography>
           </CardContent>
         </Collapse> */}
-              </Card>
-            </div>
-          ))}
+                </Card>
+              </div>
+            )
+          )}
           {/* </div> */}
         </div>
       </div>

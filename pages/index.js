@@ -32,19 +32,46 @@ export default function Home(props) {
 
   return (
     <div className={styles.container}>
-      <Card cardData={data} />
+      <Card cardData={props.data} />
     </div>
   );
 }
+
 export async function getStaticProps() {
   const res = await fetch(
-    "https://proton.api.atomicassets.io/atomicmarket/v1/sales"
-  );
-  const dummyData = await res.json();
+    "https://jsonplaceholder.typicode.com/photos?_limit=12"
+  ).then((res) => res.json());
   return {
     props: {
-      data: dummyData,
+      data: res,
     },
+    revalidate: 5,
   };
-  // console.log(pr);
 }
+
+// export async function getServerSideProps(context) {
+//   const res = context.res;
+//   const req = context.req;
+//   console.log(res, req, "res");
+//   const postData = await fetch(
+//     "https://proton.api.atomicassets.io/atomicmarket/v1/sales"
+//   ).then((res) => res.json());
+
+//   return {
+//     props: {
+//       data: postData,
+//     },
+//   };
+// }
+// export async function getStaticProps() {
+//   const res = await fetch(
+//     "https://proton.api.atomicassets.io/atomicmarket/v1/sales"
+//   );
+//   const dummyData = await res.json();
+//   return {
+//     props: {
+//       data: dummyData,
+//     },
+//     revalidate: 5,
+//   };
+// }
